@@ -114,7 +114,13 @@ If these addresses are missing, we won't have internet access, which can be fixe
 My idea is to retain the IP address after a restart while ensuring that DHCP-based servers continue to function as before. Therefore, adding a new IP address with a single command is our real **"simple" solution.**
 
 ```powershell
+# IX
 $InterfaceIndex = (Get-NetAdapter -Name 'vEthernet (Default Switch)').ifIndex
+
+# For remove initial
+# Get-NetIPAddress -InterfaceIndex (Get-NetAdapter -Name 'vEthernet (Default Switch)').ifIndex | Remove-NetIPAddress -confirm:$false
+
+# Assign new range
 New-NetIPAddress -InterfaceIndex $InterfaceIndex -IPAddress 192.168.100.1 -PrefixLength 24
 ```
 
@@ -140,9 +146,9 @@ Yes, but we can delegate this task to the operating system using **Task Schedule
 4. Click **Create Task** and configure:
    - **General / Name:** `Set-HyperVDefaultSwitchIP`
    - **General / Description:** Adds an additional IP range to Hyper-V Default Switch.
+   - **Administrator Rights:** True
    - **Triggers / Add:**
      - **At log on** - This user.
-     - **Start delay** - 30 seconds.
    - **Actions / Add:**
      - **Start a program** - `powershell.exe -WindowStyle hidden -ExecutionPolicy Bypass -File "C:\Users\xxxYOURUSERNAMEHERExxx\StartupScripts\Set-HyperVDefaultSwitchIP.ps1"`
 
