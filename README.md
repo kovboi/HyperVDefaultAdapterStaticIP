@@ -143,7 +143,7 @@ Yes, but we can delegate this task to the operating system using **Task Schedule
    - **Triggers / Add:**
      - **At log on** - This user.
    - **Actions / Add:**
-     - **Start a program** - `powershell.exe -ExecutionPolicy Bypass -File "C:\Users\xxxYOURUSERHERExxx\StartupScripts\Set-HyperVDefaultSwitchIP.ps1"`
+     - **Start a program** - `powershell.exe -WindowStyle hidden -ExecutionPolicy Bypass -File "C:\Users\xxxYOURUSERNAMEHERExxx\StartupScripts\Set-HyperVDefaultSwitchIP.ps1"`
 
 That's it! 🎉
 
