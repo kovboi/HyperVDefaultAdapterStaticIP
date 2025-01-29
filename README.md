@@ -118,7 +118,7 @@ My idea is to retain the IP address after a restart while ensuring that DHCP-bas
 $InterfaceIndex = (Get-NetAdapter -Name 'vEthernet (Default Switch)').ifIndex
 
 # For remove initial
-# Get-NetIPAddress -InterfaceIndex (Get-NetAdapter -Name 'vEthernet (Default Switch)').ifIndex | Remove-NetIPAddress -confirm:$false
+# Get-NetIPAddress -InterfaceIndex $InterfaceIndex | Remove-NetIPAddress -confirm:$false
 
 # Assign new range
 New-NetIPAddress -InterfaceIndex $InterfaceIndex -IPAddress 192.168.100.1 -PrefixLength 24
