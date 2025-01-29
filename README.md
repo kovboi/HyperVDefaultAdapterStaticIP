@@ -142,6 +142,7 @@ Yes, but we can delegate this task to the operating system using **Task Schedule
    - **General / Description:** Adds an additional IP range to Hyper-V Default Switch.
    - **Triggers / Add:**
      - **At log on** - This user.
+     - **Start delay** - 30 seconds.
    - **Actions / Add:**
      - **Start a program** - `powershell.exe -WindowStyle hidden -ExecutionPolicy Bypass -File "C:\Users\xxxYOURUSERNAMEHERExxx\StartupScripts\Set-HyperVDefaultSwitchIP.ps1"`
 
